@@ -10,13 +10,16 @@
 The goal of `repdemoproj` is to demonstrate a reproducible data analysis
 project.
 
+## Docker
+
+Run this project in Docker.
+
+    docker pull xmjandrews/verse:20.06.25
+    docker run --rm -p 8787:8787 -e PASSWORD=<passwd> -e ROOT=true -v <local drive>:/home/rstudio xmjandrews/verse:20.06.25
+
+## Package
+
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(bayeslmm)
+lmmplot(sleepstudy)
 ```

@@ -18,8 +18,20 @@ knitr::opts_chunk$set(
 
 The goal of `repdemoproj` is to demonstrate a reproducible data analysis project.
 
-```{r cars}
-summary(cars)
+## Docker
+
+Run this project in Docker.
+```
+docker pull xmjandrews/verse:20.06.25
+docker run --rm -p 8787:8787 -e PASSWORD=<passwd> -e ROOT=true -v <local drive>:/home/rstudio xmjandrews/verse:20.06.25
+```
+
+## Package
+
+
+```{r demo, eval=F}
+library(bayeslmm)
+lmmplot(sleepstudy)
 ```
 
 
