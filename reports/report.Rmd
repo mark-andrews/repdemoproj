@@ -1,0 +1,52 @@
+---
+title: "A Bayesian Mixed Effects Linear Model"
+author: "Mark Andrews"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+```{r}
+# Load the `bayeslmm` package
+library(bayeslmm)
+
+# Load `here` for handling relative paths
+library(here)
+```
+
+
+# Introduction
+
+We will analyse a sleep deprivation data using a Bayesian linear mixed effects model.
+The data is displayed in Figure \ref{fig:sleepdeprivplot}.
+The linear mixed effects model is based on
+$$
+y_i \sim N(\mu_i, \sigma^2),\quad \mu_i = \beta_{[0,s_i]} + \beta_{[1,s_i]} x_i,
+$$
+where $y_i$ is the reaction time on observation $i$, $x_i$ is the number of days without sleep, $s_i \in \{1, 2 \ldots J\}$  the identity of the subject on observation $i$.
+
+```{r sleepdeprivplot, fig.cap="Reaction time as a function of sleep deprivation. Each subplot shows a different participant in the sleep deprivation study.", fig.align="center", out.width="0.67\\textwidth"}
+lmmplot(sleepstudy_df)
+```
+
+```{r}
+results_0 <- readRDS(here('tmp/model_0.rds'))
+results_1 <- readRDS(here('tmp/model_1.rds'))
+```
+
+The estimates of the fixed effects of a varying intercept model are shown in the following table.
+```{r}
+knitr::kable(brms::fixef(results_0$model),
+             format = 'latex',
+             digits = 2,
+             booktabs = TRUE) %>% 
+  kableExtra::kable_styling(position = 'center')
+```
+

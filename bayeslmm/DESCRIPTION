@@ -14,6 +14,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Imports: 
     dplyr,
+    here,
+    kableExtra,
     ggplot2,
     magrittr,
     lme4,
