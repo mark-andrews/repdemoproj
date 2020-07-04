@@ -22,7 +22,26 @@ The `Dockerfile` for the Docker image is also available
 
 ## Package
 
+Install the package from the local `bayeslmm` directory like this (where
+`upgrade = F` means that it does not ask you to update dependencies):
+
+``` r
+devtools::install_local('bayeslmm', upgrade = F)
+```
+
+Or install it from GitHub like this:
+
+``` r
+devtools::install_github("https://github.com/mark-andrews/repdemoproj.git", 
+                         subdir = 'bayeslmm', 
+                         upgrade = F)
+```
+
+Then, load it and use it like this.
+
 ``` r
 library(bayeslmm)
-lmmplot(sleepstudy)
+lmmplot(sleepstudy_df)
 ```
+
+![](README_files/figure-gfm/demo-1.png)<!-- -->

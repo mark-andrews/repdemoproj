@@ -6,8 +6,9 @@ output: github_document
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  message = F,
+  warning = F
 )
 ```
 
@@ -31,9 +32,35 @@ The `Dockerfile` for the Docker image is also available [here](Dockerfile).
 
 ## Package
 
-```{r demo, eval=F}
+```{r, echo=F, results='hide'}
+# If it's installed, uninstall it.
+if ('bayeslmm' %in% rownames(installed.packages())){
+  devtools::uninstall('bayeslmm')
+}
+```
+
+
+Install the package from the local `bayeslmm` directory like this (where `upgrade = F` means that it does not ask you to update dependencies):
+```{r, results='hide'}
+devtools::install_local('bayeslmm', upgrade = F)
+```
+```{r, echo=F, results='hide'}
+# uninstall it so that we can re-install it from GitHub next
+devtools::uninstall('bayeslmm')
+```
+
+Or install it from GitHub like this:
+```{r, eval=T, results = 'hide'}
+devtools::install_github("https://github.com/mark-andrews/repdemoproj.git", 
+                         subdir = 'bayeslmm', 
+                         upgrade = F)
+```
+
+Then, load it and use it like this.
+
+```{r demo, eval=T, results='hide'}
 library(bayeslmm)
-lmmplot(sleepstudy)
+lmmplot(sleepstudy_df)
 ```
 
 
