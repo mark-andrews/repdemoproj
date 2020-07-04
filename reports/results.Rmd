@@ -1,0 +1,8 @@
+The estimates of the fixed effects of a varying intercept model are shown in the following table.
+```{r}
+knitr::kable(brms::fixef(results_0$model),
+             format = 'latex',
+             digits = 2,
+             booktabs = TRUE) %>% 
+  kableExtra::kable_styling(position = 'center')
+```

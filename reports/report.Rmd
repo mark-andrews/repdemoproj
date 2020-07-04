@@ -3,8 +3,6 @@ title: "A Bayesian Mixed Effects Linear Model"
 author: "Mark Andrews"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r, echo=FALSE}
@@ -41,12 +39,9 @@ results_0 <- readRDS(here('tmp/model_0.rds'))
 results_1 <- readRDS(here('tmp/model_1.rds'))
 ```
 
-The estimates of the fixed effects of a varying intercept model are shown in the following table.
-```{r}
-knitr::kable(brms::fixef(results_0$model),
-             format = 'latex',
-             digits = 2,
-             booktabs = TRUE) %>% 
-  kableExtra::kable_styling(position = 'center')
+## Results 
+
+```{r child='results.Rmd'}
 ```
+
 

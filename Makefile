@@ -11,7 +11,7 @@ bayeslmm/data/sleepstudy_df.rda: raw_data/make_data.R
 	Rscript raw_data/make_data.R
 
 clean:
-	rm -f bayeslmm/data/sleepstudy_df.rda
 	rm -f reports/report.pdf
+	rm -f reports/report.tex
 	rm -f tmp/model_0.rds
 	rm -f tmp/model_1.rds
